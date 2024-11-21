@@ -4,6 +4,8 @@ const { Mongoose } = require("mongoose");
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
+const middlewarw = require('../middleware/fetchuser');
+
 
 const router = express.Router();
 
@@ -113,5 +115,17 @@ router.post(
 );
 
 //================== Route 3: Get user login Detail POST: api/auth/getUser ''login required  ===========================
+router.post('/getuser', middlewarw, async (req,res)=>{
+    try {
+      
+     let userId = req.user.id;
+      const user = await User.findById(userId).select("-password");
+      res.send(user);
+
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send("some internal server error accrued");
+    }
+});
 
 module.exports = router;
