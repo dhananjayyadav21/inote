@@ -117,7 +117,7 @@ router.post(
 //================== Route 3: Get user login Detail POST: api/auth/getUser ''login required  ===========================
 router.post('/getuser', middlewarw, async (req,res)=>{
     try {
-      
+      //====== find user from datbase using user id 
      let userId = req.user.id;
       const user = await User.findById(userId).select("-password");
       res.send(user);
