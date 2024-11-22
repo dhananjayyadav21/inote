@@ -2,21 +2,23 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
+import Mynote from "./components/Mynote";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NoteState from "./context/note/NoteState";
 
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-       
+      <NoteState>
+        <Router>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            {/* <Route path="/contact" element={<Contact />} /> */}
+            <Route path="/mynote" element={<Mynote />} />
           </Routes>
-        
-      </Router>
+        </Router>
+      </NoteState>
     </>
   );
 }

@@ -1,38 +1,60 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  let location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location]);
+
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-        <Link class="navbar-brand" to="/">
-          Navbar
-        </Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <Link class="nav-link" to="/">
-                Home <span class="sr-only"></span>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/about">
-                About
-              </Link>
-            </li>
-          </ul>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+          <Link className="navbar-brand fw-bold" to="/">
+            iNotebook
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 fw-normal">
+              <li className="nav-item">
+                <Link className={`nav-link  ${location.pathname==="/"?"active":""}`} aria-current="page" to="/">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className= {`nav-link  ${location.pathname==="/about"?"active":""}`} to="/about">
+                  About
+                </Link>
+              </li>
 
+              <li className="nav-item">
+                <Link className={`nav-link  ${location.pathname==="/mynote"?"active":""}`} to="/mynote">
+                  My Note
+                </Link>
+              </li>
+            </ul>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success">login</button>
+            </form>
+          </div>
         </div>
       </nav>
     </div>

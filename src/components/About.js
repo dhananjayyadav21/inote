@@ -1,9 +1,13 @@
-import React from 'react'
+import React,{} from 'react'
+
 
 const About = () => {
+
+
+
   return (
     <div>
-      
+      <h1>Hye i am about</h1>
     </div>
   )
 }
