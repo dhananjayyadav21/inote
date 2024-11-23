@@ -1,17 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NoteContext from "../context/note/NoteContext";
 import Noteiteam from "./Noteiteam";
 import Addnote from "./Addnote";
 
 const Notes = () => {
   const context = useContext(NoteContext);
+  const { note, getNotes } = context;
 
-  const { note } = context;
-
+  useEffect(() => {
+    getNotes();
+    // eslint-disable-next-line
+  }, []);
   return (
     <>
       <div className=" d-flex">
-        <Addnote/>
+        <Addnote />
 
         <div className="px-5 col-4" style={{ height: "92vh" }}>
           <div className="my-4">
