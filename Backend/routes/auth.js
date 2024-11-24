@@ -23,14 +23,16 @@ router.post(
     //=============== if there are errors accrued shoe bad request and errors
     const result = validationResult(req);
     if (!result.isEmpty()) {
-      return res.send({ errors: result.array() });
+      success = false;
+      return res.send({success, errors: result.array() });
     }
 
     //=========== if user allrady exsist with this email
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user) {
-        return res.status(400).json({ error: "Aleady resiter this Email" });
+        success = false;
+        return res.status(400).json({success, error: "Aleady resiter this Email" });
       }
 
       const reqUser = req.body;
@@ -53,8 +55,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, authToken_SECRATE);
-
-      res.json({ authToken });
+      success = true; 
+      res.json({success, authToken });
       //====== if accrued internal server error show error
     } catch (error) {
       res.status(500).send("some internal server error accrued");
@@ -73,7 +75,8 @@ router.post(
     //===== if there are errors accrued bad request and errors
     const result = validationResult(req);
     if (!result.isEmpty()) {
-      return res.send({ errors: result.array() });
+      success = false;
+      return res.send({success, errors: result.array() });
     }
 
     const { email, password } = req.body;
@@ -82,17 +85,19 @@ router.post(
       //====== check user email exist or not
       let user = await User.findOne({ email });
       if (!user) {
+        success = false;
         return res
           .status(400)
-          .json({ error: "Plese try to login with correct credentials" });
+          .json({success,  error: "Plese try to login with correct credentials" });
       }
 
       //====== check user password correct or not
       const PasswordCompare = await bcrypt.compare(password, user.password);
       if (!PasswordCompare) {
+        success = false;
         return res
           .status(400)
-          .json({ error: "Plese try to login with correct credentials" });
+          .json({success, error: "Plese try to login with correct credentials" });
       }
 
       //===== JWT authentication for Token
@@ -103,8 +108,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, authToken_SECRATE);
-
-      res.json({ authToken });
+      success = true;
+      res.json({success, authToken });
 
       //====== if error accrued in internal server
     } catch (error) {

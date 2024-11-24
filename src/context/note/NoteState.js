@@ -41,7 +41,7 @@ const NoteState = (props) => {
       //Add note on db
       const json = await responce.json();
       console.log(json);
-      setNote(note.concat(json));
+      setNote(notes.concat(json));
       //if accured error
     } catch (err) {
       console.log(err);
@@ -64,14 +64,14 @@ const NoteState = (props) => {
       //Update note on db
       const json = await responce.json();
       console.log(json);
-      setNote(note.concat(json));
+      setNote(notes.concat(json));
       //if accured error
     } catch (err) {
       console.log(err);
     }
     
-    for (let index = 0; index < note.length; index++) {
-      const element = note[index];
+    for (let index = 0; index < notes.length; index++) {
+      const element = notes[index];
       if (element._id === id) {
         element.title = title;
         element.discription = discription;
@@ -98,14 +98,14 @@ const NoteState = (props) => {
       console.error(error.message);
     }
     //Delete note fron db
-    const newNotes = note.filter((note) => note._id !== id);
+    const newNotes = notes.filter((note) => note._id !== id);
     setNote(newNotes);
   };
 
-  const [note, setNote] = useState(initialnotes);
+  const [notes, setNote] = useState(initialnotes);
 
   return (
-    <NoteContext.Provider value={{ note, getNotes, addNote, deleteNote }}>
+    <NoteContext.Provider value={{ notes, getNotes, addNote, deleteNote }}>
       {props.children}
     </NoteContext.Provider>
   );

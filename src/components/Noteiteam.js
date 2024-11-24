@@ -18,7 +18,7 @@ const Noteiteam = (props) => {
               <i
                 className="fa-solid fa-delete-left mx-2"
                 onClick={() => {
-                 deleteNote(note._id);
+                  deleteNote(note._id);
                 }}
               ></i>
               <i className="fa-solid fa-pen-to-square mx-2"></i>
