@@ -6,10 +6,12 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NoteState from "./context/note/NoteState";
+import AlertState from "./context/alert/AlertState";
 
 function App() {
   return (
     <>
+    <AlertState>
       <NoteState>
         <Router>
           <Navbar />
@@ -21,6 +23,7 @@ function App() {
           </Routes>
         </Router>
       </NoteState>
+      </AlertState>
     </>
   );
 }

@@ -1,12 +1,24 @@
-import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import AlertContext from "../context/alert/AlertContext";
 
 const Navbar = () => {
   let location = useLocation();
 
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
+  //navigate
+  const navigate = useNavigate();
+
+  //alert using AlertContext
+  const Context = useContext(AlertContext);
+  const { showAlert } = Context;
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    showAlert("Logout User", "danger")
+    setTimeout(() => {
+      navigate("/login");
+    }, 0);
+  };
 
   return (
     <div>
@@ -29,20 +41,41 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 fw-normal">
               <li className="nav-item">
-                <Link className={`nav-link  ${location.pathname==="/"?"active":""}`} aria-current="page" to="/">
+                <Link
+                  className={`nav-link  ${
+                    location.pathname === "/" ? "active" : ""
+                  }`}
+                  aria-current="page"
+                  to="/"
+                >
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className= {`nav-link  ${location.pathname==="/about"?"active":""}`} to="/about">
+                <Link
+                  className={`nav-link  ${
+                    location.pathname === "/about" ? "active" : ""
+                  }`}
+                  to="/about"
+                >
                   About
                 </Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <Link className="btn btn-success mx-1" to="/login">login</Link>
-              <Link className="btn btn-success mx-1" to="/Register">Sign Up</Link>
-            </form>
+            {!localStorage.getItem("token") ? (
+              <form className="d-flex" role="search">
+                <Link className="btn btn-success mx-1" to="/login">
+                  login
+                </Link>
+                <Link className="btn btn-success mx-1" to="/Register">
+                  Sign Up
+                </Link>
+              </form>
+            ) : (
+              <Link onClick={handleLogout} className="btn btn-danger mx-1">
+                Log Out
+              </Link>
+            )}
           </div>
         </div>
       </nav>
