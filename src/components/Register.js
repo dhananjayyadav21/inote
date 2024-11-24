@@ -50,7 +50,7 @@ const Register = () => {
   return (
     <>
      <div>
-        <div className="container rounded border border-dark border-2 mt-5 py-5 px-5 col-5">
+        <div className="container rounded border border-dark border-2 mt-5 py-5 px-5 col-lg-5 col-md-8 col-10">
           <h3 className="mb-4">Sign Up With Credentials</h3>
           <Alert/>
           <form onSubmit={handlesumbit}> 

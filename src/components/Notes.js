@@ -59,7 +59,7 @@ const Notes = () => {
 
   return (
     <>
-      <div className="d-flex">
+      <div className="d-md-flex">
         <Addnote />
 
         <button
@@ -166,7 +166,7 @@ const Notes = () => {
           </div>
         </div>
 
-        <div className="px-5 col-4" >
+        <div className="px-5 col-lg-4 " >
           <div className="my-4">
             <h3>Your notes</h3>
             <div className="container mt-2"style={{ maxHeight: "79vh", overflow: "auto" }} >

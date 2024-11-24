@@ -20,7 +20,7 @@ const Addnote = () => {
 
   return (
     <>
-      <div className="container col-7 my-4">
+      <div className="container col-md-7 col-10 my-4">
         <h2 className="mt-2 ">Add New Note </h2>
 
         <div className=" my-2" style={{ height: "50px" }}>
