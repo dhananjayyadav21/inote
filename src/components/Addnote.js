@@ -9,6 +9,8 @@ const Addnote = () => {
   const addnotehandle = (e) => {
     e.preventDefault();
     addNote(note.title, note.discription, note.tag);
+    setNote({ title: "", discription: "", tag: "" });
+
   };
 
   const handleonchange = (e) => {
@@ -29,8 +31,9 @@ const Addnote = () => {
               className="form-control"
               id="title"
               name="title"
-              aria-describedby="emailHelp"
+              value={note.title}
               onChange={handleonchange}
+              minLength={5} required
             />
           </div>
           <div className="mb-3">
@@ -42,8 +45,9 @@ const Addnote = () => {
               className="form-control"
               id="discription"
               name="discription"
-              aria-describedby="emailHelp"
+              value={note.discription}
               onChange={handleonchange}
+              minLength={5} required
             />
           </div>
           <div className="mb-3">
@@ -55,7 +59,9 @@ const Addnote = () => {
               className="form-control"
               id="tag"
               name="tag"
+              value={note.tag}
               onChange={handleonchange}
+              minLength={2} required
             />
           </div>
           <div className="mb-3 form-check">
@@ -72,6 +78,7 @@ const Addnote = () => {
             type="button"
             className="btn btn-primary"
             onClick={addnotehandle}
+            disabled={note.title.length<5 || note.discription.length<5}
           >
             Add Note
           </button>

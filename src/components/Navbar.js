@@ -38,12 +38,6 @@ const Navbar = () => {
                   About
                 </Link>
               </li>
-
-              <li className="nav-item">
-                <Link className={`nav-link  ${location.pathname==="/mynote"?"active":""}`} to="/mynote">
-                  My Note
-                </Link>
-              </li>
             </ul>
             <form className="d-flex" role="search">
               <Link className="btn btn-success mx-1" to="/login">login</Link>

@@ -6,7 +6,7 @@ const Noteiteam = (props) => {
 
   const { deleteNote } = context;
 
-  const { note } = props;
+  const { note, noteUpdate } = props;
 
   return (
     <>
@@ -21,7 +21,7 @@ const Noteiteam = (props) => {
                   deleteNote(note._id);
                 }}
               ></i>
-              <i className="fa-solid fa-pen-to-square mx-2"></i>
+              <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{noteUpdate(note)}}></i>
             </div>
           </div>
           <p className="card-text">{note.discription}</p>
