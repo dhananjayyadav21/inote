@@ -11,7 +11,6 @@ const Notes = () => {
   //use navigate
   const navigate = useNavigate();
 
-
   //useEffect run before the whole program
   useEffect(() => {
     //if user note login
@@ -167,10 +166,10 @@ const Notes = () => {
           </div>
         </div>
 
-        <div className="px-5 col-4" style={{ maxHeight: "92vh" }}>
+        <div className="px-5 col-4" >
           <div className="my-4">
             <h3>Your notes</h3>
-            <div className="container">
+            <div className="container mt-2"style={{ maxHeight: "79vh", overflow: "auto" }} >
               {notes.map((note) => {
                 return (
                   <Noteiteam
