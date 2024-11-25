@@ -56,7 +56,7 @@ const Noteiteam = (props) => {
               <button
                 onClick={handleyesDelete}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-danger"
               >
                 Yes Delete
               </button>

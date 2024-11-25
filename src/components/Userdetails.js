@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-const getUserUri = "http://localhost:5000/api/auth/getuser"
+const getUserUri = "http://localhost:5000/api/auth/getuser";
 
 const Userdetails = () => {
   //navigate page
@@ -63,8 +63,8 @@ const Userdetails = () => {
   return (
     <>
       <div className="container row d-flex py-5 px-5 justify-content-center">
-        <div className="form-container rounded-4 shadow col-md-8 col-11  py-5 px-5 my-5">
-          <h2 className="text-center mb-4">Your Profile </h2>
+        <div className="userdetail-container form-container border border-3 rounded-4 shadow col-md-8 col-11 py-5 px-5 my-3">
+          <h2 className="text-start fw-bold mb-4">Your Profile </h2>
 
           <form>
             <div className="mb-3">
@@ -134,12 +134,12 @@ const Userdetails = () => {
           id="exampleModalToggle"
           aria-hidden="true"
           aria-labelledby="exampleModalToggleLabel"
-          tabindex="-1">
+          tabindex="-1"
+        >
           <div class="modal-dialog modal-dialog-centered">
             <div class="deleteacount modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalToggleLabel">
-                  
                   Delete Account
                 </h5>
                 <button
@@ -164,9 +164,8 @@ const Userdetails = () => {
                 <button
                   onClick={handleSavChanges}
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-danger"
                 >
-                 
                   Yes Delete
                 </button>
               </div>
@@ -184,7 +183,7 @@ const Userdetails = () => {
         </a>
 
         <div className="col-md-4  col-11 my-5">
-          <div className="container shadow rounded-4 py-3 px-3">
+          <div className="deleteacount-container container shadow border border-3 rounded-4 py-3 px-3">
             <h6 className="fw-bold mb-4">Delete Account</h6>
             <p>
               You will lose access to your iNoteDocar account once your deletion
