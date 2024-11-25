@@ -24,8 +24,9 @@ const Noteiteam = (props) => {
               <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{noteUpdate(note)}}></i>
             </div>
           </div>
-          <p className="card-text">{note.discription}</p>
+          <h6 className="card-text">{note.discription}</h6>
           <p className=" fw-bold">#{note.tag}</p>
+          <h6 className="card-text">{note.Date}</h6>
         </div>
       </div>
     </>

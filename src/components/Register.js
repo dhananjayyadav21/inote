@@ -1,5 +1,5 @@
 import React,{useState,useContext} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import AlertContext from '../context/alert/AlertContext';
 import Alert from './Alert';
 
@@ -50,8 +50,8 @@ const Register = () => {
   return (
     <>
      <div>
-        <div className="container rounded border border-dark border-2 mt-5 py-5 px-5 col-lg-5 col-md-8 col-10">
-          <h3 className="mb-4">Sign Up With Credentials</h3>
+        <div className=" authentication container  border border-dark border-2 rounded-4 mt-5 py-5 px-5 col-lg-5 col-md-8 col-10">
+          <h3 className="mb-4">CREATE ACCOUNT FOR INOTEDOCAR</h3>
           <Alert/>
           <form onSubmit={handlesumbit}> 
           <div className="mb-3">
@@ -77,6 +77,7 @@ const Register = () => {
             </button>
           </form>
         </div>
+        <div className="d-flex justify-content-center mt-2 fs-5 fw-bold fst-italic"><p>Alrady have an account ?</p><span><Link to="/login">Login</Link></span></div>
       </div>
     </>
   )

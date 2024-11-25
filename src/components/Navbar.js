@@ -25,7 +25,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand fw-bold" to="/">
-            iNotebook
+          iNoteDocar
           </Link>
           <button
             className="navbar-toggler"
@@ -64,15 +64,15 @@ const Navbar = () => {
             </ul>
             {!localStorage.getItem("token") ? (
               <form className="d-flex" role="search">
-                <Link className="btn btn-success mx-1" to="/login">
+                <Link className="btn btn-warning mx-1 rounded-4" to="/login">
                   login
                 </Link>
-                <Link className="btn btn-success mx-1" to="/Register">
+                <Link className="btn btn-warning mx-1 rounded-4" to="/Register">
                   Sign Up
                 </Link>
               </form>
             ) : (
-              <Link onClick={handleLogout} className="btn btn-danger mx-1">
+              <Link onClick={handleLogout} className="btn btn-danger mx-1 rounded-4">
                 Log Out
               </Link>
             )}

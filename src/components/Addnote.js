@@ -20,13 +20,12 @@ const Addnote = () => {
 
   return (
     <>
-      <div className="container col-md-7 col-10 my-4">
-        <h2 className="mt-2 ">Add New Note </h2>
+      <div className="container border border border-3 rounded-4 py-4 px-5 col-md-7 col-11 my-4 addnote">
+        <h2 className="mt-2">Add New Note </h2>
 
         <div className=" my-2" style={{ height: "50px" }}>
           <Alert />
         </div>
-
         <form>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">

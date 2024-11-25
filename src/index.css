@@ -17,15 +17,35 @@ i{
 }
 
 
-.scroll-black *::-webkit-scrollbar {
-  width: 4px; 
+
+/* html body background*/
+body {
+  background: linear-gradient(to bottom, #f8fffe,#ddf970, #f8fffe);
+  height: 100vh; /* Set container to full viewport height */
 }
 
-.scroll-black *::-webkit-scrollbar-track {
-  background: transparent; 
+/* notes background*/
+.addnote {
+  background: linear-gradient(to bottom, #ffffff,#575757);
 }
 
-.scroll-black *::-webkit-scrollbar-thumb {
-  background-color: rgb(0, 0, 0); 
+/* .noteitem {
+  background: linear-gradient(to bottom, #ffffff,#ffffff);
+} */
+
+/* authentication background*/
+.authentication {
+  background: linear-gradient(to bottom, #effffb,#5e5c5f, #e1fffc); 
 }
+
+/* editnote background */
+.editform {
+  background: linear-gradient(to bottom, #effffb,#5e5c5f, #e1fffc); 
+}
+
+.editformbg{
+  background: linear-gradient(to bottom, #f8fffe,#ddf970, #f8fffe);
+}
+
+/* navbar background*/
 

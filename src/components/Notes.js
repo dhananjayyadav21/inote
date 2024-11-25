@@ -69,18 +69,17 @@ const Notes = () => {
           data-bs-toggle="modal"
           data-bs-target="#editNote"
         ></button>
-
         <div
-          className="modal fade"
+          className=" editformbg modal fade "
           id="editNote"
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div className="modal-dialog">
-            <div className="modal-content">
+          <div className="modal-dialog ">
+            <div className="editform modal-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="editNoteTitle">
+                <h1 className=" modal-title fs-5" id="editNoteTitle">
                   Edit Note
                 </h1>
                 <button
@@ -166,10 +165,13 @@ const Notes = () => {
           </div>
         </div>
 
-        <div className="px-5 col-lg-4 " >
-          <div className="my-4">
+        <div className="container col-md-4 col-11 ">
+          <div className=" border border-dark border-3 rounded-4 py-4 px-5 my-4">
             <h3>Your notes</h3>
-            <div className="container mt-2"style={{ maxHeight: "79vh", overflow: "auto" }} >
+            <div
+              className="container mt-3 noteitem"
+              style={{ height: "70vh", overflow: "auto" }}
+            >
               {notes.map((note) => {
                 return (
                   <Noteiteam

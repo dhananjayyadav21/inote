@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AlertContext from "../context/alert/AlertContext";
 import Alert from "./Alert";
 
@@ -51,8 +51,8 @@ const Login = () => {
     <>
 
       <div>
-        <div className="container rounded border border-dark border-2 mt-5 py-5 px-5 col-lg-5 col-md-8 col-10">
-          <h3 className="mb-4">Login With Credentials</h3>
+        <div className="authentication container border border-3 rounded-4 border-dark mt-5 py-5 px-5 col-lg-5 col-md-8 col-10">
+          <h3 className="mb-4">LOGIN WITH RIGHT CREDENTIAL</h3>
            <Alert/>
           <form onSubmit={handlesumbit}>
             <div className="mb-3">
@@ -81,21 +81,12 @@ const Login = () => {
                 value={Credentials.password}
               />
             </div>
-            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="checkbox"
-              />
-              <label className="form-check-label" htmlFor="checkbox">
-                Check me out{" "}
-              </label>
-            </div>
             <button type="submit" className="btn btn-primary">
               Submit
             </button>     
           </form>
         </div>
+        <div className="d-flex justify-content-center mt-5 fs-5 fw-bold fst-italic"><p>Dont have an account ?</p><span><Link to="/Register">Register</Link></span></div>
       </div>
     </>
   );
