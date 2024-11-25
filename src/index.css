@@ -47,5 +47,9 @@ body {
   background: linear-gradient(to bottom, #f8fffe,#ddf970, #f8fffe);
 }
 
-/* navbar background*/
+/* delete acount and note background */
+.deleteacount,.deleteNote {
+  background: linear-gradient(to bottom, #effffb,#b6ffff, #e1fffc); 
+}
+
 

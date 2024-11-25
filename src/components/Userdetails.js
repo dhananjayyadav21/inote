@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+const getUserUri = "http://localhost:5000/api/auth/getuser"
 
 const Userdetails = () => {
   //navigate page
@@ -16,13 +17,12 @@ const Userdetails = () => {
   }, []);
 
   const [user, setUser] = useState({ name: "", email: "", Date: "", id: "" });
-  //   setUser({name:json.name, email:json.email, Date:json.Date, id:json._id})
 
   //get user from db ==============================================================================================
   const getUser = async () => {
     //API CALL
     try {
-      const responce = await fetch(`http://localhost:5000/api/auth/getuser`, {
+      const responce = await fetch(`${getUserUri}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,10 +46,19 @@ const Userdetails = () => {
   //handle handleonchange function of the form
   const handleonchange = (e) => {};
 
-  const handleDelete = ()=>{
-    localStorage.removeItem('token');
+  //handle delete coinfirmation
+  const ref = useRef(null);
+  const refClose = useRef(null);
+
+  const handleDelete = () => {
+    ref.current.click();
+  };
+
+  const handleSavChanges = () => {
+    localStorage.removeItem("token");
+    refClose.current.click();
     navigate("/login");
-  }
+  };
 
   return (
     <>
@@ -120,6 +129,59 @@ const Userdetails = () => {
           </form>
         </div>
 
+        <div
+          class="modal fade "
+          id="exampleModalToggle"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="deleteacount modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">
+                  
+                  Delete Account
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                You will lose access to your iNoteDocar account
+              </div>
+              <div className="modal-footer">
+                <button
+                  ref={refClose}
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSavChanges}
+                  type="button"
+                  className="btn btn-primary"
+                >
+                 
+                  Yes Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          ref={ref}
+          class="btn btn-primary d-none"
+          data-bs-toggle="modal"
+          href="#exampleModalToggle"
+          role="button"
+        >
+          Open first modal
+        </a>
 
         <div className="col-md-4  col-11 my-5">
           <div className="container shadow rounded-4 py-3 px-3">
@@ -129,7 +191,9 @@ const Userdetails = () => {
               request has been submitted.
             </p>
             <div className="mt-4 modal-footer">
-              <button className="btn btn-danger " onClick={handleDelete}>Delete Account</button>
+              <button className="btn btn-danger " onClick={handleDelete}>
+                Delete Account
+              </button>
             </div>
           </div>
         </div>

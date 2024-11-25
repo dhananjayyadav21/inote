@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import NoteContext from "../context/note/NoteContext";
 
 const Noteiteam = (props) => {
@@ -8,8 +8,71 @@ const Noteiteam = (props) => {
 
   const { note, noteUpdate } = props;
 
+  //handle delete coinfirmation
+  const ref = useRef(null);
+  const refClose = useRef(null);
+
+  const handleDeletenote = () => {
+    ref.current.click();
+  };
+
+  const handleyesDelete = () => {
+    deleteNote(note._id);
+    refClose.current.click();
+  };
+
   return (
     <>
+      <div
+        class="modal fade "
+        id="exampleModalToggle"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="deleteNote deleteacount modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalToggleLabel">
+                Delete Note
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">You will lose your note</div>
+            <div className="modal-footer">
+              <button
+                ref={refClose}
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleyesDelete}
+                type="button"
+                className="btn btn-primary"
+              >
+                Yes Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a ref={ref}
+        class="btn btn-primary d-none"
+        data-bs-toggle="modal"
+        href="#exampleModalToggle"
+        role="button"
+      >
+        Open first modal
+      </a>
+
       <div className="card my-2">
         <div className="card-body">
           <div className="d-flex flex-row align-items-center justify-content-between">
@@ -17,11 +80,14 @@ const Noteiteam = (props) => {
             <div>
               <i
                 className="fa-solid fa-delete-left mx-2"
+                onClick={handleDeletenote}
+              ></i>
+              <i
+                className="fa-solid fa-pen-to-square mx-2"
                 onClick={() => {
-                  deleteNote(note._id);
+                  noteUpdate(note);
                 }}
               ></i>
-              <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{noteUpdate(note)}}></i>
             </div>
           </div>
           <h6 className="card-text">{note.discription}</h6>
