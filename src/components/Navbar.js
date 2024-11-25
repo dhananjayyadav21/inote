@@ -71,11 +71,12 @@ const Navbar = () => {
                   Sign Up
                 </Link>
               </form>
-            ) : (
-              <Link onClick={handleLogout} className="btn btn-danger mx-1 rounded-4">
+            ) : ( <>
+              <Link to="/user" className="btn btn-danger mx-1 rounded-4">
+              <i className="fa-solid fa-user-shield"></i>
+              </Link> <Link onClick={handleLogout} className="btn btn-danger mx-1 rounded-4">
                 Log Out
-              </Link>
-            )}
+              </Link> </> )}
           </div>
         </div>
       </nav>

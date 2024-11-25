@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NoteState from "./context/note/NoteState";
 import AlertState from "./context/alert/AlertState";
+import Userdetails from "./components/Userdetails";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="/user" element={<Userdetails />} />
           </Routes>
         </Router>
       </NoteState>
