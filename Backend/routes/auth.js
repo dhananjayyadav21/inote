@@ -8,7 +8,7 @@ const middlewarw = require('../middleware/fetchuser');
 
 
 const router = express.Router();
-
+const AUTHTOKEN_SECRATE = process.env.AUTHTOKEN_SECRATE;
 //====================== Route 1: create user using POST: api/auth/createuser no login =============================
 router.post(
   "/createuser",
@@ -47,14 +47,13 @@ router.post(
       });
 
       //========== JWT authentication for Token provide user
-      const authToken_SECRATE = "NEEL@IS$HERO#!&";
 
       const data = {
         user: {
           id: user.id,
         },
       };
-      const authToken = jwt.sign(data, authToken_SECRATE);
+      const authToken = jwt.sign(data, AUTHTOKEN_SECRATE);
       success = true; 
       res.json({success, authToken });
       //====== if accrued internal server error show error
@@ -101,13 +100,12 @@ router.post(
       }
 
       //===== JWT authentication for Token
-      const authToken_SECRATE = "NEEL@IS$HERO#!&";
       const data = {
         user: {
           id: user.id,
         },
       };
-      const authToken = jwt.sign(data, authToken_SECRATE);
+      const authToken = jwt.sign(data, AUTHTOKEN_SECRATE);
       success = true;
       res.json({success, authToken });
 

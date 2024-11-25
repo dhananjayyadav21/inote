@@ -24,26 +24,26 @@ const Noteiteam = (props) => {
   return (
     <>
       <div
-        class="modal fade "
+        className="modal fade "
         id="exampleModalToggle"
         aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1"
+        tabIndex="-1"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="deleteNote deleteacount modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalToggleLabel">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="deleteNote deleteacount modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalToggleLabel">
                 Delete Note
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">You will lose your note</div>
+            <div className="modal-body">You will lose your note</div>
             <div className="modal-footer">
               <button
                 ref={refClose}
@@ -65,7 +65,7 @@ const Noteiteam = (props) => {
         </div>
       </div>
       <a ref={ref}
-        class="btn btn-primary d-none"
+        className="btn btn-primary d-none"
         data-bs-toggle="modal"
         href="#exampleModalToggle"
         role="button"

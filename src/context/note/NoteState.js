@@ -1,8 +1,9 @@
 import NoteContext from "./NoteContext";
 import AlertContext from "../alert/AlertContext";
 import { useState, useContext } from "react";
+import * as GlobalUrls from "../../GlobalURL"
 
-const HOST = "http://localhost:5000/";
+
 const NoteState = (props) => {
   let initialnotes = [];
 
@@ -14,7 +15,7 @@ const NoteState = (props) => {
   const getNotes = async () => {
     //API CALL
     try {
-      const responce = await fetch(`${HOST}api/notes/fetchallnotes`, {
+      const responce = await fetch(GlobalUrls.GETALLNOTES_URL, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +34,7 @@ const NoteState = (props) => {
   const addNote = async (title, discription, tag) => {
     //API CALL
     try {
-      const responce = await fetch(`${HOST}api/notes/addnote`, {
+      const responce = await fetch(GlobalUrls.ADDNOTE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +57,7 @@ const NoteState = (props) => {
   const editNote = async (id, title, discription, tag) => {
     //API CALL
     try {
-      const responce = await fetch(`${HOST}api/notes/updatenote/${id}`, {
+      const responce = await fetch(`${GlobalUrls.UPDATENOTE_URL}/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +92,7 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     try {
       //API CALL
-      const responce = await fetch(`${HOST}api/notes/deletenote/${id}`, {
+      const responce = await fetch(`${GlobalUrls.DELETENOTE_URL}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

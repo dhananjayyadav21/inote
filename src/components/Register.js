@@ -2,6 +2,7 @@ import React,{useState,useContext} from 'react'
 import { useNavigate,Link } from 'react-router-dom';
 import AlertContext from '../context/alert/AlertContext';
 import Alert from './Alert';
+import * as GlobalUrls from "../GlobalURL"
 
 
 const Register = () => {
@@ -15,10 +16,9 @@ const Register = () => {
 
   const handlesumbit = async(e)=>{
     e.preventDefault();
-    const url = "http://localhost:5000/api/auth/createuser"
     try {
       //API CALL
-      const responce = await fetch(`${url}`, {
+      const responce = await fetch(GlobalUrls.Register_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

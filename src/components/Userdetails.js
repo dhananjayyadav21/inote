@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-const getUserUri = "http://localhost:5000/api/auth/getuser";
+import * as GlobalUrls from "../GlobalURL"
 
 const Userdetails = () => {
   //navigate page
@@ -22,7 +22,7 @@ const Userdetails = () => {
   const getUser = async () => {
     //API CALL
     try {
-      const responce = await fetch(`${getUserUri}`, {
+      const responce = await fetch(GlobalUrls.GETUSER_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

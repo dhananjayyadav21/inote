@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AlertContext from "../context/alert/AlertContext";
 import Alert from "./Alert";
-
+import * as GlobalUrls from "../GlobalURL"
 const Login = () => {
   const [Credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
@@ -13,10 +13,9 @@ const Login = () => {
 
   const handlesumbit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:5000/api/auth/login";
     try {
       //API CALL
-      const responce = await fetch(`${url}`, {
+      const responce = await fetch(GlobalUrls.LOGIN_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
